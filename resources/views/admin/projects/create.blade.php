@@ -1,7 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-{{-- @include('partials.errors') --}}
+
+@if ($errors->any())
+<ul class="alert alert-danger">
+    @foreach ($errors->all() as $error)
+        <li>
+            {{$error}}
+        </li>
+    @endforeach
+</ul>
+    
+@endif
 
 <h1>Crea un nuovo progetto</h1>
 

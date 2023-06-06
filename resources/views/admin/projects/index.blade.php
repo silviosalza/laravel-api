@@ -2,7 +2,11 @@
 
 @section('content')
     <h1>I miei progetti</h1>
-    {{-- @include('partials.session_message') --}}
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
 
     <table class="table">
         <thead>

@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>I miei progetti</h1>
+    {{-- @include('partials.session_message') --}}
 
     <table class="table">
         <thead>

@@ -3,6 +3,8 @@
 @section('content')
 {{-- @include('partials.errors') --}}
 
+<h1>Crea un nuovo progetto</h1>
+
     <form action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
         <div class="mb-3">

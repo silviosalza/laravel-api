@@ -11,6 +11,6 @@ class Project extends Model
     protected $fillable = ['title', 'content', 'slug'];
 
     public function type(){
-        return $this->hasOne(Type::class);
+        return $this->belongsTo(Type::class);
     }
 }

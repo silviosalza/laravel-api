@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id');
-            $table->string('name', 100);
-            $table->string('slug', 100)->unique();
+            $table->string('name');
+            $table->string('slug')->unique();
             $table->timestamps();
-
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 

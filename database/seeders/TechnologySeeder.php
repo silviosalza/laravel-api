@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TechnologySeeder extends Seeder
 {
@@ -14,6 +16,12 @@ class TechnologySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $technologies = ['Mathlab', 'Laravel', 'Photoshop', 'Php'];
+        foreach ($technologies as $tech_value) {
+            $new_type = new Technology();
+            $new_type->name = $tech_value;
+            $new_type->slug = Str::slug($tech_value);
+            $new_type->save();
+        }
     }
 }

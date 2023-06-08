@@ -27,7 +27,7 @@
                     <td>{{$project->type?->name}}</td>
                     <td>
                         @forelse ($project->technologies as $technology)
-                            {{$technology->name}}
+                            {{$technology->name}} {{ $loop->last ? '' : ',' }}
                         @empty
                             <span>Nessuna tecnologia usata</span>
                         @endforelse

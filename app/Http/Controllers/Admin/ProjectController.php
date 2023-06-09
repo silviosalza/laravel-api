@@ -47,7 +47,11 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
         $project = Project::create($data);
-        $project->technologies()->attach($data['technology_id']);
+        if ($request->has('technology_id')) {
+            // inserimento nella tabella ponte
+            $project->technologies()->attach($request->technology_id);
+        }
+        // $project->technologies()->attach($data['technology_id']);
         return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato creato");
     }
 

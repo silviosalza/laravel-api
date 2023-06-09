@@ -74,8 +74,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types')); 
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies')); 
     }
 
     /**
@@ -87,9 +89,16 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
         $project->update($data);
+        if ($request->has('technology_id')){
+            $project->technologies()->sync($data['technology_id']);
+
+        } else{
+            $project->technologies()->detach();
+
+        };
         return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato modificato");
     }
 
